@@ -7,24 +7,35 @@
 <script type="text/javascript">
 	 function arvuta(){
 	 	var eur= parseFloat(document.getElementById("eur").value);
-	 	var eur_usd= 1.07615;
-	 	var komisjon= 0.02;
+	 	var eur_usd= parseFloat(document.getElementById("kurss").value);
+	 	komisjonitasu = 
+	 		(parseFloat(document.getElementById("komisjonitasu").value)/100)*eur;
 
-		var usd=eur*eur_usd;
-		var kokku = eur_usd-(komisjon*eur_usd);
+	 	var usd=eur*eur_usd;
+		var kokku = usd-komisjonitasu;
+
 		kokku=kokku.toFixed(2);
+		
 		document.getElementById("vastus").innerHTML=kokku;
 	}
 </script>
 </head>
 
 <body>
-<h1>EUR / USD</h1>
-EUR:
-<input type="text" id="eur" />
-<input type="button" value="OK" onclick="arvuta();" />
-<div id="vastus">
-USD:
-</div>
+	<h1>EUR / USD</h1>
+	<input type="text" id="eur" placeholder="EUR:" />
+	<br>
+
+	<input type="text" id="kurss" placeholder="Kurss:"/>
+	<br>
+
+	<input type="text" id="komisjonitasu" placeholder="Komisjonitasu %:" />
+	<input type="button" value="OK" onclick="arvuta();" />
+	<br>
+
+	USD kätte:
+	<div id="vastus" >
+	
+	</div>
 </body>
 </html>
